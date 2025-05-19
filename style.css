@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+:root{
+    --main-color: #694FC4;
+    --sub-color: #EE1770;
+    --bg-gradient: linear-gradient(90deg,rgba(242, 184, 215, 1) 0%, rgba(230, 230, 252, 1) 65%, rgba(207, 183, 237, 1) 100%);
+    --main-fomt: "Zen Maru Gothic", serif;
+}
+
+body{
+    font-family: var(--main-fomt);
+    background: var(--bg-gradient);
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+#header{
+    width: 100%;
+}
+footer{
+    background-color: #fff;
+}
+.copylight{
+    padding: 50px;
+    text-align: center;
+}
+
+.sp, #mask{
+    display: none;
+}
+
+.inner{
+    max-width: 1100px;
+    margin: 0px auto 0; 
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 30px; */
+}
+
+.user-icon{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+.user-icon img{
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.login-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 2%;
+}
+.login-user h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.navi-menu{
+    padding: 2%;
+}
+.navi-menu ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.admin-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: aliceblue;
+    padding: 2%;
+}
+
+/* 新規投稿 */
+.new-post{
+    text-align: center;
+    padding: 2%;
+}
+
+.btn{
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 60px;
+    border-radius: 10px;
+    outline: none;
+    color: var(--main-color);
+    background-color: #fff;
+    position: relative;
+    border: 1px solid var(--main-color);
+    transition: color 0.5s ease;
+    overflow: hidden;
+}
+.btn:hover{
+    color: #fff;
+}
+.btn:hover::before{
+    transform: scaleY(1);
+}
+.btn::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--main-color);
+    transform: scaleX(0);
+    transition: all 0.5s ease;
+    transition-property: transform;
+}
+.btn-text{
+    position: relative;
+    font-size: 1.25rem;
+}
+
+/* メインコンテンツ */
+.contents{
+    text-align: center;
+}
+
+.item{
+    background-color: aliceblue;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 30px auto;
+    width: 60%;
+}
+
+.username{
+    font-size: 1.5rem;
+}
+
+.left{
+    width: 80px;
+    height: auto;
+}
+.right{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1; /* 残りのスペースを可変で埋める */
+}
+
+.bottom{
+    padding: 3%;
+}
+
+.post-img{
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+}
+.post-img img{
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px){
+
+    .pc{
+        display: none;
+    }
+    .sp{
+        display: block;
+    }
+
+    .navi-menu ul{
+        flex-direction: column;
+        margin-top: 30%;
+        gap: 15px;
+    }
+
+    .login-user h1{
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .item{
+        width: 100%;
+    }
+
+    .inner{
+        padding: 0 3%;
+    }
+
+    .right{
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    /* ハンバーガーボタン */
+    .hamburger{
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+    }
+    
+    .hamburger span{
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: var(--sub-color);
+        transition: all 0.4s;
+    }
+    
+    .hamburger span:nth-of-type(1){
+        top: 0px;
+    }
+    
+    .hamburger span:nth-of-type(2){
+        top: 10px;
+    }
+    
+    .hamburger span:nth-of-type(3){
+        top: 20px;
+    }
+    
+    .open .hamburger span:nth-of-type(1){
+        transform: rotate(315deg);
+        top: 10px;
+    }
+    
+    .open .hamburger span:nth-of-type(2){
+        opacity: 0;
+    }
+    
+    .open .hamburger span:nth-of-type(3){
+        transform: rotate(-315deg);
+        top: 10px;
+    }
+
+    #mask {
+        display: block;
+        overflow-x: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.9;
+        z-index: 2;
+        transform: translateX(-100%);
+        transition: all 0.3s;
+        color: #fff;
+    }
+    .open #mask{
+        transform: translateX(0%);
+    }
+
+}
